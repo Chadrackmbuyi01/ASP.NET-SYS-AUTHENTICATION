@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ASP.NET-SYS-AUTHENTICATION")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f26005244bee4069749f16c37ad28227536902bd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12dbadee3c3a62b0f335ecebe2dea35d19fbfcd7")]
 [assembly: System.Reflection.AssemblyProductAttribute("ASP.NET-SYS-AUTHENTICATION")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ASP.NET-SYS-AUTHENTICATION")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
