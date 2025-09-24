@@ -1,31 +1,47 @@
-using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ASP.NET_SYS_AUTHENTICATION.Models;
+using ASP.NET_SYS_AUTHENTICATION.Services;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
 
-namespace ASP.NET_SYS_AUTHENTICATION.Controllers;
-
-public class HomeController : Controller
+namespace AuthApp.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    public class HomeController : Controller
     {
-        _logger = logger;
-    }
+        private readonly IAuthService _authService;
 
-    public IActionResult Index()
-    {
-        return View();
-    }
+        public HomeController(IAuthService authService)
+        {
+            _authService = authService;
+        }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        [Authorize]
+        public async Task<IActionResult> Dashboard()
+        {
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
+            var user = await _authService.GetUserByIdAsync(userId);
+
+            if (user == null)
+            {
+                await HttpContext.SignOutAsync();
+                return RedirectToAction("Login", "Account");
+            }
+
+            var model = new DashboardViewModel
+            {
+                FullName = $"{user.Firstname} {user.Lastname}",
+                Email = user.Email,
+                LastLogin = user.LastLogin,
+                MemberSince = user.CreatedAt
+            };
+
+            return View(model);
+        }
     }
 }
