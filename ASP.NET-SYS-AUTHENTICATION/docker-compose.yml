@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - SA_PASSWORD:"Chadsmith2025"
+      - ACCEPT_EULA:"Y"
+    ports:
+      - "1401:1433"
+    volumes:
+      - sqldata:/var/opt/mssql
+    networks:
+      - aspnet-sys-authentication-net
+
+volumes:
+  sqldata:
+
+networks:
+  aspnet-sys-authentication-net:
+    driver: bridge
