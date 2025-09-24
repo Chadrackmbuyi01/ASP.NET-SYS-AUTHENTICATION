@@ -10,10 +10,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("ASP.NET-SYS-AUTHENTICATION")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+05fb7fbce793528dc5a10deca16c657b30a1c8dd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4c79673e264a4bddfdd7b1dc323330730fec2e7")]
 [assembly: System.Reflection.AssemblyProductAttribute("ASP.NET-SYS-AUTHENTICATION")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ASP.NET-SYS-AUTHENTICATION")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
